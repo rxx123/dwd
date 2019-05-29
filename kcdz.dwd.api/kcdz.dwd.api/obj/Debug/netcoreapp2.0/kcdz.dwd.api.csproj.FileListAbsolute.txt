@@ -1,0 +1,11 @@
+E:\dwd\kcdz.dwd.api\kcdz.dwd.api\bin\Debug\netcoreapp2.0\kcdz.dwd.api.deps.json
+E:\dwd\kcdz.dwd.api\kcdz.dwd.api\bin\Debug\netcoreapp2.0\kcdz.dwd.api.runtimeconfig.json
+E:\dwd\kcdz.dwd.api\kcdz.dwd.api\bin\Debug\netcoreapp2.0\kcdz.dwd.api.runtimeconfig.dev.json
+E:\dwd\kcdz.dwd.api\kcdz.dwd.api\bin\Debug\netcoreapp2.0\kcdz.dwd.api.dll
+E:\dwd\kcdz.dwd.api\kcdz.dwd.api\bin\Debug\netcoreapp2.0\kcdz.dwd.api.pdb
+E:\dwd\kcdz.dwd.api\kcdz.dwd.api\obj\Debug\netcoreapp2.0\kcdz.dwd.api.csproj.CoreCompileInputs.cache
+E:\dwd\kcdz.dwd.api\kcdz.dwd.api\obj\Debug\netcoreapp2.0\kcdz.dwd.api.AssemblyInfoInputs.cache
+E:\dwd\kcdz.dwd.api\kcdz.dwd.api\obj\Debug\netcoreapp2.0\kcdz.dwd.api.AssemblyInfo.cs
+E:\dwd\kcdz.dwd.api\kcdz.dwd.api\obj\Debug\netcoreapp2.0\kcdz.dwd.api.dll
+E:\dwd\kcdz.dwd.api\kcdz.dwd.api\obj\Debug\netcoreapp2.0\kcdz.dwd.api.pdb
+E:\dwd\kcdz.dwd.api\kcdz.dwd.api\obj\Debug\netcoreapp2.0\kcdz.dwd.api.csprojAssemblyReference.cache
