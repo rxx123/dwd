@@ -29,7 +29,7 @@
                                     <span>{{(filter.currentPage - 1) * filter.per_page + scope.$index + 1}}</span>
                                 </template>
                             </el-table-column>
-                            <el-table-column prop="DeviceCode" label="设备代码" width="180" sortable fixed></el-table-column>
+                            <!-- <el-table-column prop="DeviceCode" label="设备代码" width="180" sortable fixed></el-table-column> -->
                             <el-table-column prop="DeviceClassify" label="设备分类" show-overflow-tooltip></el-table-column>
                             <el-table-column prop="DeviceName" label="设备名称" width="180"></el-table-column>
                             <el-table-column prop="DeviceType" label="设备型号" width="180"></el-table-column>
