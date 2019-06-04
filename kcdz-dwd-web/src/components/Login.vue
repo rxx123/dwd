@@ -57,7 +57,8 @@ export default {
           this.logining = true;
           //NProgress.start();
           var loginParams = { username: this.ruleForm2.account, password: this.ruleForm2.checkPass };
-          requestLogin(loginParams).then(data => {
+          requestLogin(loginParams)
+          .then(data => {
             this.logining = false;
             if (data.Result) {
               sessionStorage.setItem('user', JSON.stringify(data.Data));

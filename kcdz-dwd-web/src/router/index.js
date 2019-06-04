@@ -10,6 +10,10 @@ import EquipmentLedger from '@/components/equipment/EquipmentLedger'
 import EquipmentOverhaul from '@/components/overhaul/EquipmentOverhaul'
 import EquipmentMaintain from '@/components/overhaul/EquipmentMaintain'
 import EquipmentCentralized from '@/components/overhaul/EquipmentCentralized'
+import FaultManagement from '@/components/breakdown/FaultManagement'
+import BasicInformationManagement from '@/components/system/BasicInformationManagement'
+import UserPrivilegeManagement from '@/components/system/UserPrivilegeManagement'
+import UserInformationManagement from '@/components/system/UserInformationManagement'
 
 Vue.use(Router)
 
@@ -92,7 +96,7 @@ export default new Router({
       name: '故障处置',
       iconCls: 'el-icon-s-open',
       children: [
-        { path: '/page9', component: Home, name: '故障处置管理' }
+        { path: '/FaultManagement', component: FaultManagement, name: '故障处置管理' }
       ]
     },
     {
@@ -101,9 +105,9 @@ export default new Router({
       name: '系统管理',
       iconCls: 'el-icon-s-tools',
       children: [
-        { path: '/page11', component: Home, name: '用户信息管理' },
-        { path: '/page12', component: Home, name: '用户权限管理' },
-        { path: '/page13', component: Home, name: '基础信息管理' }
+        { path: '/UserInformationManagement', component: UserInformationManagement, name: '用户信息管理' },
+        { path: '/UserPrivilegeManagement', component: UserPrivilegeManagement, name: '用户权限管理' },
+        { path: '/BasicInformationManagement', component: BasicInformationManagement, name: '基础信息管理' }
       ]
     }
   ]

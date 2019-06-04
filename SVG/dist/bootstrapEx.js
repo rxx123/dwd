@@ -78,7 +78,7 @@ bootstrapEx.language = {
                     $(t.footer).append(_b);
                 }, this);
                 if (t.InitMax) {
-                    $(t.renderto).find('.modal-dialog').css('width', $(window).width() - 150 * 2);// - 200 * 2
+                    //$(t.renderto).find('.modal-dialog').css('width', $(window).width() - 150 * 2);// - 200 * 2
                     $(t.renderto).find('.modal-body').css('min-height', $(window).height() - 110 * 2);// - 150 * 2
                 }
                 if (isshow) {

@@ -32,7 +32,7 @@
 			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
 					xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="1713.83" height="841.89"
 					viewBox="0 0 1713.83 841.89" xml:space="preserve" color-interpolation-filters="sRGB" class="st33" id="svg">
-				<title>鏂板缓 Microsoft Visio 缁樺浘</title>
+				<title></title>
 				<style type="text/css">
 					.st1 {fill:#000000;font-family:宋体;font-size:0.75em}
 					.st2 {fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.24}
@@ -3578,7 +3578,7 @@
 	}
 	//点击信号机
 	function changeSemaphore(evt) 
-	{ 
+	{
 		var length=evt.currentTarget.children.length;
 		var param={title:"",desc:'',station:'树园'};
 		for(var i=0;i<length;i++){
@@ -3682,7 +3682,7 @@
 		}
 	}
 	//初始化信号机弹框
-    function InitModalSemaphore(title,desc,data) {
+    function InitModalSemaphore1(title,desc,data) {
         $(document.body).append('<div id="modal2"></div>');
         ModalSemaphore = new Modal();
 		ModalSemaphore.title=title;
@@ -3701,6 +3701,68 @@
 			html+='</form>';
 		ModalSemaphore.body = html;//内容
 		ModalSemaphore.OnfirstInited = function () {//绘制完成后事件
+            $("#btn_save").click(function (event) {
+                if(event.currentTarget.innerText=="编辑"){
+					event.currentTarget.innerText="确定";
+					$("form input").not("#DeviceName").removeAttr("readonly");
+				}else{
+					var paramm={Id:$("#Id").val()==""?"-1":$("#Id").val(),
+							BelongStation:"树园",
+							DeviceName:$("#DeviceName").val(),
+							LineLimit:$("#LineLimit").val(),
+							AdjacentLimit:$("#AdjacentLimit").val(),
+							LensGroupType:$("#LensGroupType").val(),
+							NumberIndicators:$("#NumberIndicators").val(),
+							InstitutionalType:$("#InstitutionalType").val(),
+							EquipmentModel:$("#EquipmentModel").val()};
+					$.ajax({
+				        type:"PUT",
+				        url:"http://localhost:54942/api/equipment/Semaphore",
+				        dataType:"json", 
+						contentType:"application/json", 
+						data: JSON.stringify(paramm),
+				        success:function(data){
+				           if(data.Result){
+							  swal(data.Msg);
+				           }else{
+				              swal(data.Msg);
+				           }
+				        },
+				        error:function(jqXHR){
+				          swal("发生错误："+ jqXHR.status);
+				        }
+					});
+					ModalSemaphore.hide();
+				}
+            })
+        };
+    }
+	function InitModalSemaphore(title,desc,data) {
+        $(document.body).append('<div id="modal2"></div>');
+        ModalSemaphore = new Modal();
+		ModalSemaphore.title=title;
+        ModalSemaphore.btns = [{ id: "btn_save", text: "编辑" }, { id: "closebtn" }]
+        ModalSemaphore.InitMax = false;//是否最大化
+        ModalSemaphore.renderto = "#modal2";//绘制到div	
+		var html='<form>';
+			html+='<div class="form-group" style="display:none;">Id：<input id="Id" type="text" class="form-control" readonly="readonly" value="'+(data==null?"":data.Id)+'"></div>';
+			html+='<div class="form-group">名称：<input id="DeviceName" type="text" class="form-control" readonly="readonly" value="'+(data==null?desc:data.DeviceName)+'"></div>';
+			html+='<div class="form-group">本线限界：<input id="LineLimit" type="text" class="form-control" readonly="readonly" value="'+(data==null?"":data.LineLimit)+'"></div>';
+			html+='<div class="form-group">邻线限界：<input id="AdjacentLimit" type="text" class="form-control" readonly="readonly" value="'+(data==null?"":data.AdjacentLimit)+'"></div>';
+			html+='<div class="form-group">透镜组类型：<input id="LensGroupType" type="text" class="form-control" readonly="readonly" value="'+(data==null?"":data.LensGroupType)+'"></div>';
+			html+='<div class="form-group">表示器个数：<input id="NumberIndicators" type="text" class="form-control" readonly="readonly" value="'+(data==null?"":data.NumberIndicators)+'"></div>';
+			html+='<div class="form-group">机构类型：<input id="InstitutionalType" type="text" class="form-control" readonly="readonly" value="'+(data==null?"":data.InstitutionalType)+'"></div>';
+			html+='<div class="form-group">器材型号：<input id="EquipmentModel" type="text" class="form-control" readonly="readonly" value="'+(data==null?"":data.EquipmentModel)+'"></div>';
+			html+='</form>';
+		tab1 = new Tab();
+        ModalSemaphore.OnfirstInited = function (thismodal) {
+            tab1.tabs = [{
+                id: "tabs1", title: "基本属性", active: true,bodyel: html
+            }, {
+                id: "tabs2", title: '检修计划', bodyel: "检修计划"
+            }];
+            tab1.renderto = thismodal.body;
+            tab1.Init();       
             $("#btn_save").click(function (event) {
                 if(event.currentTarget.innerText=="编辑"){
 					event.currentTarget.innerText="确定";
@@ -3789,6 +3851,7 @@
             })
         };
 	}
+	//初始化道岔弹框
 	function InitModalTurnout(title,desc,data){
 		$(document.body).append('<div id="modal2"></div>');
         ModalTurnout = new Modal();
@@ -3850,6 +3913,18 @@
 	}
 	//Modal嵌入页签页
     function InitModal3() {
+		var data=null;
+		var desc="aa";
+		var html='<form>';
+			html+='<div class="form-group" style="display:none;">Id：<input id="Id" type="text" class="form-control" readonly="readonly" value="'+(data==null?"":data.Id)+'"></div>';
+			html+='<div class="form-group">名称：<input id="DeviceName" type="text" class="form-control" readonly="readonly" value="'+(data==null?desc:data.DeviceName)+'"></div>';
+			html+='<div class="form-group">本线限界：<input id="LineLimit" type="text" class="form-control" readonly="readonly" value="'+(data==null?"":data.LineLimit)+'"></div>';
+			html+='<div class="form-group">邻线限界：<input id="AdjacentLimit" type="text" class="form-control" readonly="readonly" value="'+(data==null?"":data.AdjacentLimit)+'"></div>';
+			html+='<div class="form-group">透镜组类型：<input id="LensGroupType" type="text" class="form-control" readonly="readonly" value="'+(data==null?"":data.LensGroupType)+'"></div>';
+			html+='<div class="form-group">表示器个数：<input id="NumberIndicators" type="text" class="form-control" readonly="readonly" value="'+(data==null?"":data.NumberIndicators)+'"></div>';
+			html+='<div class="form-group">机构类型：<input id="InstitutionalType" type="text" class="form-control" readonly="readonly" value="'+(data==null?"":data.InstitutionalType)+'"></div>';
+			html+='<div class="form-group">器材型号：<input id="EquipmentModel" type="text" class="form-control" readonly="readonly" value="'+(data==null?"":data.EquipmentModel)+'"></div>';
+			html+='</form>';
         $(document.body).append('<div id="modal3"></div>');
         Modal3 = new Modal();
         Modal3.renderto = "#modal3";
@@ -3858,9 +3933,9 @@
         tab1 = new Tab();
         Modal3.OnfirstInited = function (thismodal) {
             tab1.tabs = [{
-                id: "tabs1", title: "Baidu页面", active: true, isiframe: true, url: iframeurl()
+                id: "tabs1", title: "基本属性", active: true,bodyel: html
             }, {
-                id: "tabs2", title: '其他信息', bodyel: "其他信息XXX"
+                id: "tabs2", title: '检修计划', bodyel: "检修计划"
             }];
             tab1.renderto = thismodal.body;
             tab1.Init();
